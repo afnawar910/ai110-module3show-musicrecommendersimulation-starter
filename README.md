@@ -11,23 +11,94 @@ Your goal is to:
 - Evaluate what your system gets right and wrong
 - Reflect on how this mirrors real world AI recommenders
 
-Replace this paragraph with your own summary of what your version does.
+This project is a working CLI-first music recommender simulation. Running `python -m src.main` loads an 18-song catalog from `data/songs.csv`, scores every song against a user taste profile using a Gaussian proximity algorithm, and prints a clean ranked list of the top 5 results with point-by-point explanations directly in the terminal. Each song is scored out of 10 points across six features — genre match (+2.0), mood match (+1.5), energy proximity (up to +3.0), acousticness proximity (up to +2.0), tempo proximity (up to +1.0), and valence proximity (up to +0.5) — so every recommendation comes with a transparent, human-readable reason for why it was chosen.
 
 ---
 
 ## How The System Works
 
-Explain your design in plain language.
+### How Real-World Recommenders Work — and What This Version Prioritizes
 
-Some prompts to answer:
+Real-world systems like Spotify and YouTube operate as multi-stage pipelines. In Stage 1 (Candidate Generation), approximate nearest-neighbor algorithms narrow a library of millions of songs down to a few hundred candidates in milliseconds by grouping songs into similarity neighborhoods. In Stage 2 (Scoring), each candidate receives a relevance score computed from the user's taste profile — often using Gaussian proximity across many audio dimensions simultaneously. In Stage 3 (Ranking), business logic is layered on top: diversity rules prevent the same artist from dominating the list, freshness bonuses surface new releases, and contextual signals (time of day, activity) shift feature weights in real time. This simulation focuses on **Stage 2** — the scoring engine — using a Gaussian (RBF) kernel to reward songs that land exactly on a user's preferred energy, tempo, and acousticness values, combined with binary categorical matching on mood and genre. The ranking stage is kept simple (top-N by score) so the scoring logic stays transparent and easy to inspect.
 
-- What features does each `Song` use in your system
-  - For example: genre, mood, energy, tempo
-- What information does your `UserProfile` store
-- How does your `Recommender` compute a score for each song
-- How do you choose which songs to recommend
+---
+![alt text](image.png)
 
-You can include a simple diagram or bullet list if helpful.
+### Song Features
+
+Each `Song` object stores the following attributes drawn directly from `songs.csv`:
+
+| Feature | Type | Role in scoring |
+|---|---|---|
+| `genre` | string | Binary match against `favorite_genres` list (weight **0.20**) |
+| `mood` | string | Binary match against `favorite_moods` list (weight **0.15**) |
+| `energy` | float 0–1 | Gaussian proximity to `target_energy` (weight **0.30**) |
+| `acousticness` | float 0–1 | Gaussian proximity to `target_acousticness` (weight **0.20**) |
+| `tempo_bpm` | integer | Gaussian proximity to `target_tempo` after ÷200 normalization (weight **0.10**) |
+| `valence` | float 0–1 | Gaussian proximity to `target_valence` (weight **0.05**) |
+| `danceability` | float 0–1 | Loaded but not scored — reserved for future experiments |
+
+### UserProfile Features
+
+Each `UserProfile` object stores:
+
+| Field | Type | Purpose |
+|---|---|---|
+| `favorite_genres` | list of strings | Genres the user prefers; binary 1.0 match, else 0.0 |
+| `favorite_moods` | list of strings | Moods the user prefers; binary 1.0 match, else 0.0 |
+| `target_energy` | float 0–1 | Center (μ) of the Gaussian for energy |
+| `target_tempo` | float BPM | Center (μ) for tempo; normalized to 0–1 before scoring |
+| `target_acousticness` | float 0–1 | Center (μ) of the Gaussian for acousticness |
+| `target_valence` | float 0–1 | Center (μ) of the Gaussian for valence |
+| `sigma` | float | Gaussian pickiness — default **0.20** (more forgiving than 0.15) |
+| `weights` | dict | Per-feature weights; must sum to 1.0 |
+
+---
+
+### Algorithm Recipe (Finalized)
+
+**Step 1 — Load catalog**
+Parse `data/songs.csv` into a list of typed song dicts using `load_songs()`.
+
+**Step 2 — For each song, call `score_song(user_prefs, song)`**
+
+Compute six sub-scores:
+
+```
+energy_score       = gaussian(song.energy,            target_energy,            σ)
+acousticness_score = gaussian(song.acousticness,       target_acousticness,      σ)
+valence_score      = gaussian(song.valence,            target_valence,           σ)
+tempo_score        = gaussian(song.tempo_bpm / 200,    target_tempo / 200,       σ)
+
+genre_score        = 1.0  if song.genre in favorite_genres  else 0.0
+mood_score         = 1.0  if song.mood  in favorite_moods   else 0.0
+```
+
+where `gaussian(x, μ, σ) = e ^ ( -(x − μ)² / (2σ²) )`
+
+**Step 3 — Weighted sum**
+
+```
+total = 0.30 × energy_score
+      + 0.20 × genre_score
+      + 0.20 × acousticness_score
+      + 0.15 × mood_score
+      + 0.10 × tempo_score
+      + 0.05 × valence_score
+```
+
+**Step 4 — Rank and return**
+Collect `(song, total, explanation)` for all songs, sort descending by `total`, return top-k.
+
+---
+
+### Potential Biases to Watch For
+
+- **Genre + acousticness dominance** — Together genre (0.20) and acousticness (0.20) account for 40% of the score. A song in the wrong genre but with a perfect acoustic texture will still outscore a genre-matched song with slightly wrong acousticness. This could surface folk or classical songs for a lofi user when the catalog expands.
+- **Mood under-reward before the fix, over-reward risk now** — Raising mood from 0.05 → 0.15 means a song with a matching mood but mismatched energy (e.g., an *intense* lofi track) could still rank highly. Monitor whether mood match is pulling the wrong songs up.
+- **Binary categorical cliff** — Genre and mood are all-or-nothing (1.0 or 0.0). A song with a closely related genre (e.g., `indie pop` vs `pop`) scores zero on genre regardless of how similar it actually sounds.
+- **Small catalog amplifies outliers** — With only 18 songs, a single weight change visibly reshapes the entire top-5. Results will stabilize with a larger catalog.
+- **No diversity enforcement** — If multiple songs share the same top-scoring genre and mood, they will all cluster at the top with no mechanism to surface variety.
 
 ---
 
