@@ -61,10 +61,10 @@ def score_song(user_prefs: Dict, song: Dict) -> Tuple[float, List[str]]:
     """
     Score one song against a dict-based user profile using a point system.
 
-    Point budget (max 10.0 pts):
-        genre match          +2.0  (binary: song genre in favorite_genres)
+    Point budget (max 12.0 pts):
+        genre match          +1.0  (binary: song genre in favorite_genres)
         mood match           +1.5  (binary: song mood in favorite_moods)
-        energy proximity     +3.0  (Gaussian × 3.0 — most audibly noticeable)
+        energy proximity     +6.0  (Gaussian × 6.0 — most audibly noticeable)
         acousticness prox.   +2.0  (Gaussian × 2.0 — organic vs. electronic)
         tempo proximity      +1.0  (Gaussian × 1.0 — normalized BPM)
         valence proximity    +0.5  (Gaussian × 0.5 — musical brightness)
@@ -72,18 +72,18 @@ def score_song(user_prefs: Dict, song: Dict) -> Tuple[float, List[str]]:
     Returns
     -------
     (score, reasons)
-        score   – total points accumulated (0.0 – 10.0)
+        score   – total points accumulated (0.0 – 12.0)
         reasons – one string per feature showing its point contribution,
-                  e.g. "genre match (+2.00)", "energy proximity (+2.85)"
+                  e.g. "genre match (+1.00)", "energy proximity (+5.70)"
     """
     sigma = user_prefs.get("sigma", DEFAULT_SIGMA)
 
     score = 0.0
     reasons: List[str] = []
 
-    # ── categorical: genre match (+2.0) ──────────────────────────────────────
+    # ── categorical: genre match (+1.0) ──────────────────────────────────────
     if song["genre"] in user_prefs.get("favorite_genres", []):
-        pts = 2.0
+        pts = 1.0
         score += pts
         reasons.append(f"genre match (+{pts:.2f})")
 
@@ -93,12 +93,12 @@ def score_song(user_prefs: Dict, song: Dict) -> Tuple[float, List[str]]:
         score += pts
         reasons.append(f"mood match (+{pts:.2f})")
 
-    # ── numeric: energy proximity (Gaussian × 3.0, max +3.0) ────────────────
+    # ── numeric: energy proximity (Gaussian × 6.0, max +6.0) ────────────────
     energy_pts = gaussian(
         song["energy"],
         user_prefs.get("target_energy", 0.5),
         sigma,
-    ) * 3.0
+    ) * 6.0
     score += energy_pts
     reasons.append(
         f"energy proximity (+{energy_pts:.2f})  "

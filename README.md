@@ -101,6 +101,398 @@ Collect `(song, total, explanation)` for all songs, sort descending by `total`, 
 - **No diversity enforcement** — If multiple songs share the same top-scoring genre and mood, they will all cluster at the top with no mechanism to surface variety.
 
 ---
+![alt text](image-1.png)
+![alt text](image-2.png)
+===============================================================
+  Profile 1 - High-Energy Pop
+================================================================
+  Note   : Standard upbeat listener: pop/indie pop, happy and intense
+  Genres : ['pop', 'indie pop', 'synthwave']
+  Moods  : ['happy', 'intense', 'moody']
+  Energy target : 0.82   Tempo target : 124 BPM
+
+----------------------------------------------------------------
+  #1  Sunrise City  -  Neon Echo
+       Genre: pop   Mood: happy
+       Score: 9.99 / 10.00
+................................................................
+  Why this song:
+    * genre match (+2.00)
+    * mood match (+1.50)
+    * energy proximity (+3.00)  [song=0.82  target=0.82]
+    * acousticness proximity (+2.00)  [song=0.18  target=0.18]
+    * tempo proximity (+0.99)  [song=118 BPM  target=124 BPM]
+    * valence proximity (+0.50)  [song=0.84  target=0.82]
+----------------------------------------------------------------
+  #2  Night Drive Loop  -  Neon Echo
+       Genre: synthwave   Mood: moody
+       Score: 9.35 / 10.00
+................................................................
+  Why this song:
+    * genre match (+2.00)
+    * mood match (+1.50)
+    * energy proximity (+2.82)  [song=0.75  target=0.82]
+    * acousticness proximity (+1.96)  [song=0.22  target=0.18]
+    * tempo proximity (+0.94)  [song=110 BPM  target=124 BPM]
+    * valence proximity (+0.13)  [song=0.49  target=0.82]
+----------------------------------------------------------------
+  #3  Rooftop Lights  -  Indigo Parade
+       Genre: indie pop   Mood: happy
+       Score: 9.26 / 10.00
+................................................................
+  Why this song:
+    * genre match (+2.00)
+    * mood match (+1.50)
+    * energy proximity (+2.87)  [song=0.76  target=0.82]
+    * acousticness proximity (+1.39)  [song=0.35  target=0.18]
+    * tempo proximity (+1.00)  [song=124 BPM  target=124 BPM]
+    * valence proximity (+0.50)  [song=0.81  target=0.82]
+----------------------------------------------------------------
+  #4  Gym Hero  -  Max Pulse
+       Genre: pop   Mood: intense
+       Score: 9.16 / 10.00
+................................................................
+  Why this song:
+    * genre match (+2.00)
+    * mood match (+1.50)
+    * energy proximity (+2.58)  [song=0.93  target=0.82]
+    * acousticness proximity (+1.62)  [song=0.05  target=0.18]
+    * tempo proximity (+0.98)  [song=132 BPM  target=124 BPM]
+    * valence proximity (+0.48)  [song=0.77  target=0.82]
+----------------------------------------------------------------
+  #5  Storm Runner  -  Voltline
+       Genre: rock   Mood: intense
+       Score: 6.96 / 10.00
+................................................................
+  Why this song:
+    * mood match (+1.50)
+    * energy proximity (+2.71)  [song=0.91  target=0.82]
+    * acousticness proximity (+1.85)  [song=0.10  target=0.18]
+    * tempo proximity (+0.78)  [song=152 BPM  target=124 BPM]
+    * valence proximity (+0.12)  [song=0.48  target=0.82]
+================================================================
+
+================================================================
+  Profile 2 - Chill Lofi Study Session
+================================================================
+  Note   : Standard study listener: lofi/ambient/jazz, chill and focused
+  Genres : ['lofi', 'ambient', 'jazz']
+  Moods  : ['chill', 'focused', 'relaxed']
+  Energy target : 0.38   Tempo target : 80 BPM
+
+----------------------------------------------------------------
+  #1  Focus Flow  -  LoRoom
+       Genre: lofi   Mood: focused
+       Score: 9.97 / 10.00
+................................................................
+  Why this song:
+    * genre match (+2.00)
+    * mood match (+1.50)
+    * energy proximity (+2.99)  [song=0.40  target=0.38]
+    * acousticness proximity (+1.99)  [song=0.78  target=0.80]
+    * tempo proximity (+1.00)  [song=80 BPM  target=80 BPM]
+    * valence proximity (+0.50)  [song=0.59  target=0.60]
+----------------------------------------------------------------
+  #2  Library Rain  -  Paper Lanterns
+       Genre: lofi   Mood: chill
+       Score: 9.86 / 10.00
+................................................................
+  Why this song:
+    * genre match (+2.00)
+    * mood match (+1.50)
+    * energy proximity (+2.97)  [song=0.35  target=0.38]
+    * acousticness proximity (+1.91)  [song=0.86  target=0.80]
+    * tempo proximity (+0.98)  [song=72 BPM  target=80 BPM]
+    * valence proximity (+0.50)  [song=0.60  target=0.60]
+----------------------------------------------------------------
+  #3  Midnight Coding  -  LoRoom
+       Genre: lofi   Mood: chill
+       Score: 9.74 / 10.00
+................................................................
+  Why this song:
+    * genre match (+2.00)
+    * mood match (+1.50)
+    * energy proximity (+2.94)  [song=0.42  target=0.38]
+    * acousticness proximity (+1.81)  [song=0.71  target=0.80]
+    * tempo proximity (+1.00)  [song=78 BPM  target=80 BPM]
+    * valence proximity (+0.49)  [song=0.56  target=0.60]
+----------------------------------------------------------------
+  #4  Coffee Shop Stories  -  Slow Stereo
+       Genre: jazz   Mood: relaxed
+       Score: 9.70 / 10.00
+................................................................
+  Why this song:
+    * genre match (+2.00)
+    * mood match (+1.50)
+    * energy proximity (+3.00)  [song=0.37  target=0.38]
+    * acousticness proximity (+1.81)  [song=0.89  target=0.80]
+    * tempo proximity (+0.97)  [song=90 BPM  target=80 BPM]
+    * valence proximity (+0.43)  [song=0.71  target=0.60]
+----------------------------------------------------------------
+  #5  Spacewalk Thoughts  -  Orbit Bloom
+       Genre: ambient   Mood: chill
+       Score: 9.19 / 10.00
+................................................................
+  Why this song:
+    * genre match (+2.00)
+    * mood match (+1.50)
+    * energy proximity (+2.65)  [song=0.28  target=0.38]
+    * acousticness proximity (+1.67)  [song=0.92  target=0.80]
+    * tempo proximity (+0.88)  [song=60 BPM  target=80 BPM]
+    * valence proximity (+0.48)  [song=0.65  target=0.60]
+================================================================
+
+================================================================
+  Profile 3 - Deep Intense Rock
+================================================================
+  Note   : Standard rock listener: rock/metal, intense and angry
+  Genres : ['rock', 'metal', 'synthwave']
+  Moods  : ['intense', 'angry', 'moody']
+  Energy target : 0.93   Tempo target : 160 BPM
+
+----------------------------------------------------------------
+  #1  Storm Runner  -  Voltline
+       Genre: rock   Mood: intense
+       Score: 9.86 / 10.00
+................................................................
+  Why this song:
+    * genre match (+2.00)
+    * mood match (+1.50)
+    * energy proximity (+2.99)  [song=0.91  target=0.93]
+    * acousticness proximity (+1.99)  [song=0.10  target=0.08]
+    * tempo proximity (+0.98)  [song=152 BPM  target=160 BPM]
+    * valence proximity (+0.40)  [song=0.48  target=0.35]
+----------------------------------------------------------------
+  #2  Iron Tempest  -  Grave Circuit
+       Genre: metal   Mood: angry
+       Score: 9.69 / 10.00
+................................................................
+  Why this song:
+    * genre match (+2.00)
+    * mood match (+1.50)
+    * energy proximity (+2.94)  [song=0.97  target=0.93]
+    * acousticness proximity (+1.94)  [song=0.03  target=0.08]
+    * tempo proximity (+0.92)  [song=176 BPM  target=160 BPM]
+    * valence proximity (+0.39)  [song=0.21  target=0.35]
+----------------------------------------------------------------
+  #3  Night Drive Loop  -  Neon Echo
+       Genre: synthwave   Mood: moody
+       Score: 7.92 / 10.00
+................................................................
+  Why this song:
+    * genre match (+2.00)
+    * mood match (+1.50)
+    * energy proximity (+2.00)  [song=0.75  target=0.93]
+    * acousticness proximity (+1.57)  [song=0.22  target=0.08]
+    * tempo proximity (+0.46)  [song=110 BPM  target=160 BPM]
+    * valence proximity (+0.39)  [song=0.49  target=0.35]
+----------------------------------------------------------------
+  #4  Gym Hero  -  Max Pulse
+       Genre: pop   Mood: intense
+       Score: 7.32 / 10.00
+................................................................
+  Why this song:
+    * mood match (+1.50)
+    * energy proximity (+3.00)  [song=0.93  target=0.93]
+    * acousticness proximity (+1.98)  [song=0.05  target=0.08]
+    * tempo proximity (+0.78)  [song=132 BPM  target=160 BPM]
+    * valence proximity (+0.06)  [song=0.77  target=0.35]
+----------------------------------------------------------------
+  #5  Neon Pulse  -  Voltage Drop
+       Genre: edm   Mood: euphoric
+       Score: 5.83 / 10.00
+................................................................
+  Why this song:
+    * energy proximity (+2.97)  [song=0.96  target=0.93]
+    * acousticness proximity (+1.96)  [song=0.04  target=0.08]
+    * tempo proximity (+0.88)  [song=140 BPM  target=160 BPM]
+    * valence proximity (+0.02)  [song=0.87  target=0.35]
+================================================================
+
+================================================================
+  Profile 4 [EDGE] - The Contradiction
+================================================================
+  Note   : SAD genres/moods but HIGH-ENERGY numeric targets — can the scorer be tricked?
+  Genres : ['soul', 'classical']
+  Moods  : ['sad', 'melancholic']
+  Energy target : 0.95   Tempo target : 150 BPM
+
+----------------------------------------------------------------
+  #1  Iron Tempest  -  Grave Circuit
+       Genre: metal   Mood: angry
+       Score: 6.28 / 10.00
+................................................................
+  Why this song:
+    * energy proximity (+2.99)  [song=0.97  target=0.95]
+    * acousticness proximity (+1.99)  [song=0.03  target=0.05]
+    * tempo proximity (+0.81)  [song=176 BPM  target=150 BPM]
+    * valence proximity (+0.50)  [song=0.21  target=0.20]
+----------------------------------------------------------------
+  #2  Storm Runner  -  Voltline
+       Genre: rock   Mood: intense
+       Score: 6.07 / 10.00
+................................................................
+  Why this song:
+    * energy proximity (+2.94)  [song=0.91  target=0.95]
+    * acousticness proximity (+1.94)  [song=0.10  target=0.05]
+    * tempo proximity (+1.00)  [song=152 BPM  target=150 BPM]
+    * valence proximity (+0.19)  [song=0.48  target=0.20]
+----------------------------------------------------------------
+  #3  Neon Pulse  -  Voltage Drop
+       Genre: edm   Mood: euphoric
+       Score: 5.96 / 10.00
+................................................................
+  Why this song:
+    * energy proximity (+3.00)  [song=0.96  target=0.95]
+    * acousticness proximity (+2.00)  [song=0.04  target=0.05]
+    * tempo proximity (+0.97)  [song=140 BPM  target=150 BPM]
+    * valence proximity (+0.00)  [song=0.87  target=0.20]
+----------------------------------------------------------------
+  #4  Gym Hero  -  Max Pulse
+       Genre: pop   Mood: intense
+       Score: 5.90 / 10.00
+................................................................
+  Why this song:
+    * energy proximity (+2.99)  [song=0.93  target=0.95]
+    * acousticness proximity (+2.00)  [song=0.05  target=0.05]
+    * tempo proximity (+0.90)  [song=132 BPM  target=150 BPM]
+    * valence proximity (+0.01)  [song=0.77  target=0.20]
+----------------------------------------------------------------
+  #5  Salsa del Sol  -  Fuego Colectivo
+       Genre: latin   Mood: euphoric
+       Score: 5.39 / 10.00
+................................................................
+  Why this song:
+    * energy proximity (+2.82)  [song=0.88  target=0.95]
+    * acousticness proximity (+1.57)  [song=0.19  target=0.05]
+    * tempo proximity (+1.00)  [song=148 BPM  target=150 BPM]
+    * valence proximity (+0.00)  [song=0.93  target=0.20]
+================================================================
+
+================================================================
+  Profile 5 [EDGE] - The Invisible User
+================================================================
+  Note   : No genre/mood preferences, all numeric targets at midpoint (0.5 / 100 BPM)
+  Genres : []
+  Moods  : []
+  Energy target : 0.5   Tempo target : 100 BPM
+
+----------------------------------------------------------------
+  #1  Velvet Sunrise  -  Amara Soul
+       Genre: r&b   Mood: romantic
+       Score: 5.88 / 10.00
+................................................................
+  Why this song:
+    * energy proximity (+2.94)  [song=0.54  target=0.50]
+    * acousticness proximity (+1.85)  [song=0.42  target=0.50]
+    * tempo proximity (+0.92)  [song=84 BPM  target=100 BPM]
+    * valence proximity (+0.17)  [song=0.79  target=0.50]
+----------------------------------------------------------------
+  #2  Broken Wings  -  Ella Vane
+       Genre: soul   Mood: sad
+       Score: 5.56 / 10.00
+................................................................
+  Why this song:
+    * energy proximity (+2.87)  [song=0.44  target=0.50]
+    * acousticness proximity (+1.62)  [song=0.63  target=0.50]
+    * tempo proximity (+0.71)  [song=67 BPM  target=100 BPM]
+    * valence proximity (+0.36)  [song=0.34  target=0.50]
+----------------------------------------------------------------
+  #3  Midnight Coding  -  LoRoom
+       Genre: lofi   Mood: chill
+       Score: 5.26 / 10.00
+................................................................
+  Why this song:
+    * energy proximity (+2.77)  [song=0.42  target=0.50]
+    * acousticness proximity (+1.15)  [song=0.71  target=0.50]
+    * tempo proximity (+0.86)  [song=78 BPM  target=100 BPM]
+    * valence proximity (+0.48)  [song=0.56  target=0.50]
+----------------------------------------------------------------
+  #4  Focus Flow  -  LoRoom
+       Genre: lofi   Mood: focused
+       Score: 4.73 / 10.00
+................................................................
+  Why this song:
+    * energy proximity (+2.65)  [song=0.40  target=0.50]
+    * acousticness proximity (+0.75)  [song=0.78  target=0.50]
+    * tempo proximity (+0.88)  [song=80 BPM  target=100 BPM]
+    * valence proximity (+0.45)  [song=0.59  target=0.50]
+----------------------------------------------------------------
+  #5  Harvest Moon Walk  -  The Drifting Pines
+       Genre: folk   Mood: nostalgic
+       Score: 4.04 / 10.00
+................................................................
+  Why this song:
+    * energy proximity (+2.43)  [song=0.37  target=0.50]
+    * acousticness proximity (+0.24)  [song=0.91  target=0.50]
+    * tempo proximity (+1.00)  [song=101 BPM  target=100 BPM]
+    * valence proximity (+0.36)  [song=0.66  target=0.50]
+================================================================
+
+================================================================
+  Profile 6 [EDGE] - Genre Ghost
+================================================================
+  Note   : Favorite genres (country, k-pop, reggae) don't exist in catalog — zero genre points
+  Genres : ['country', 'k-pop', 'reggae']
+  Moods  : ['happy', 'euphoric']
+  Energy target : 0.75   Tempo target : 110 BPM
+
+----------------------------------------------------------------
+  #1  Rooftop Lights  -  Indigo Parade
+       Genre: indie pop   Mood: happy
+       Score: 7.87 / 10.00
+................................................................
+  Why this song:
+    * mood match (+1.50)
+    * energy proximity (+3.00)  [song=0.76  target=0.75]
+    * acousticness proximity (+1.94)  [song=0.35  target=0.30]
+    * tempo proximity (+0.94)  [song=124 BPM  target=110 BPM]
+    * valence proximity (+0.49)  [song=0.81  target=0.85]
+----------------------------------------------------------------
+  #2  Sunrise City  -  Neon Echo
+       Genre: pop   Mood: happy
+       Score: 7.47 / 10.00
+................................................................
+  Why this song:
+    * mood match (+1.50)
+    * energy proximity (+2.82)  [song=0.82  target=0.75]
+    * acousticness proximity (+1.67)  [song=0.18  target=0.30]
+    * tempo proximity (+0.98)  [song=118 BPM  target=110 BPM]
+    * valence proximity (+0.50)  [song=0.84  target=0.85]
+----------------------------------------------------------------
+  #3  Salsa del Sol  -  Fuego Colectivo
+       Genre: latin   Mood: euphoric
+       Score: 6.75 / 10.00
+................................................................
+  Why this song:
+    * mood match (+1.50)
+    * energy proximity (+2.43)  [song=0.88  target=0.75]
+    * acousticness proximity (+1.72)  [song=0.19  target=0.30]
+    * tempo proximity (+0.64)  [song=148 BPM  target=110 BPM]
+    * valence proximity (+0.46)  [song=0.93  target=0.85]
+----------------------------------------------------------------
+  #4  Night Drive Loop  -  Neon Echo
+       Genre: synthwave   Mood: moody
+       Score: 5.95 / 10.00
+................................................................
+  Why this song:
+    * energy proximity (+3.00)  [song=0.75  target=0.75]
+    * acousticness proximity (+1.85)  [song=0.22  target=0.30]
+    * tempo proximity (+1.00)  [song=110 BPM  target=110 BPM]
+    * valence proximity (+0.10)  [song=0.49  target=0.85]
+    * tempo proximity (+1.00)  [song=110 BPM  target=110 BPM]
+    * valence proximity (+0.10)  [song=0.49  target=0.85]
+----------------------------------------------------------------
+  #5  Street Legend  -  Cyphon
+       Genre: hip-hop   Mood: confident
+       Score: 5.60 / 10.00
+................................................................
+  Why this song:
+    * energy proximity (+2.97)  [song=0.78  target=0.75]
+    * acousticness proximity (+1.27)  [song=0.11  target=0.30]
+    * tempo proximity (+0.94)  [song=96 BPM  target=110 BPM]
+    * valence proximity (+0.42)  [song=0.73  target=0.85]
+===============================================================
 
 ## Getting Started
 
